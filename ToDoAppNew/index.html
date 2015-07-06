@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style type="text/css">
+        .col-centered {
+            float: none;
+            margin: 0 auto;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDOApp using Angularjs,Firebase and Typescript</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/moment.min.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body ng-app="app" class="container-fluid">
+    <div class="row" style="height:30px;"></div>
+    <h1>
+        <label style="margin-left:30%;color:brown;">Todo App - Typescript, Angular and Firebase.</label>
+    </h1>
+    <div ng-controller="ToDoAppController" class="panel-body">
+        <div class="row" style="height:50px;"></div>
+        <form ng-submit="addTodo()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="form-control-static" style="font-size:14px;font-weight:bold;">Enter new Note</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" ng-model="newTodo" class="form-control" />
+                            </div>
+                            <div class="col-md-1">
+                                <input type="submit" value="Add Todo" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row" style="height:50px;"></div>
+        <div class="row">
+            <table class="table table-responsive table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-2"><label>Mark all Done!</label><input type="checkbox" style="margin-left:8%;height:20px;width:20px;" ng-model="masterCheckBoxStatus" ng-click="selectAll()" /></th>
+                        <th class="col-md-6 col-md-offset-2">Todo Item</th>
+                        <th class="col-md-2">Created Date</th>
+                        <th class="col-md-2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="todo in todos" ng-style="{'background':todo.isDone?'#00CC66':'#FFFF66'}">
+                        <td>
+                            <input type="checkbox" ng-model="todo.isDone" ng-click="save(todo);" style="margin-left:40%;height:20px;width:20px;" />
+                        </td>
+                        <td>
+                            <span ng-show="!todo.inEditMode">{{todo.noteText}}</span>
+                            <input ng-show="todo.inEditMode" type="text" ng-model="todo.noteText" />
+                        </td>
+                        <td><span style="font-size:14px;">{{todo.createdDate}}</span></td>
+                        <td>
+                            <button class="btn btn-danger" ng-click="todos.$remove(todo)">Delete</button>
+                            <button class="btn btn-primary" ng-show="!todo.inEditMode" ng-click="edit(todo)">Edit</button>
+                            <button class="btn btn-success" ng-show="todo.inEditMode" ng-click="save(todo)">Save</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label class="label label-success">Completed</label>
+            <label class="label label-warning">Pending</label>
+            <!--<div class="form-group">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <span class="col-md-4" style="font-weight:bold;">Legends:</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <span class="col-md-4" style="font-weight:bold;">Completed Tasks</span>
+                            <span class="col-md-8" style="width:100%;background:#00CC66"></span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+
+                            <span class="label  col-md-4" style="font-weight:bold;">Pending Tasks</span>
+                            <span class="label col-md-8" style="width:100%;background:#FFFF66"></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

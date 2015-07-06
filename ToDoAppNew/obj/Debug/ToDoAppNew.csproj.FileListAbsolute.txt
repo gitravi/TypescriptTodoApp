@@ -1,0 +1,6 @@
+C:\Users\senr\Desktop\typescript App\ToDoAppNew\ToDoAppNew\bin\ToDoAppNew.dll.config
+C:\Users\senr\Desktop\typescript App\ToDoAppNew\ToDoAppNew\bin\ToDoAppNew.dll
+C:\Users\senr\Desktop\typescript App\ToDoAppNew\ToDoAppNew\bin\ToDoAppNew.pdb
+C:\Users\senr\Desktop\typescript App\ToDoAppNew\ToDoAppNew\obj\Debug\ToDoAppNew.csprojResolveAssemblyReference.cache
+C:\Users\senr\Desktop\typescript App\ToDoAppNew\ToDoAppNew\obj\Debug\ToDoAppNew.dll
+C:\Users\senr\Desktop\typescript App\ToDoAppNew\ToDoAppNew\obj\Debug\ToDoAppNew.pdb
